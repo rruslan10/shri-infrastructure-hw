@@ -48,14 +48,14 @@ jobs:
             ci      : CI
             style   : Code Style
             revert  : Reverts
-          default-commit-type     : Other Changes
-          mention-authors         : true
+          default-commit-type: Other Changes
+          mention-authors: true
           mention-new-contributors: true
-          include-compare-link    : true
-          include-pr-links        : true
-          include-commit-links    : true
-          semver                  : false
-          use-github-autolink     : true
+          include-compare-link: true
+          include-pr-links: true
+          include-commit-links: true
+          semver: false
+          use-github-autolink: true
 
       - name: Create or update issue
         id: issue
@@ -83,7 +83,7 @@ jobs:
 
     outputs:
       issueNumber: ${{ steps.issue.outputs.number }}
-  
+
   build-and-deploy:
     needs: [create_release]
     runs-on: ubuntu-latest
@@ -106,7 +106,7 @@ jobs:
       - name: Install and Build
         run: |
           npm ci
-          PUBLIC_URL="/shri-ci-task" npm run build
+          PUBLIC_URL="/shri-infrastructure-hw" npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
@@ -120,7 +120,7 @@ jobs:
           body: |
             Deploy ${{ github.run_id }}
 
-            Deploy Link: https://ilyamolokov.github.io/shri-ci-task
+            Deploy Link: https://rruslan10.github.io/shri-infrastructure-hw
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
